@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimpleIntrest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Simple Intrest Calculator");
+            Console.WriteLine("Please enter the principal amount");
+            int pamount = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter the rate of interest");
+            int rinterest = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter the period");
+            int period = int.Parse(Console.ReadLine());
+            double value = (pamount * rinterest * period) / 100;
+            Console.WriteLine($"The Interest for principal amount of {pamount}, rate of interset of {rinterest} and period of {period} is {value}");
+            Console.ReadLine();
+        }
+    }
+}

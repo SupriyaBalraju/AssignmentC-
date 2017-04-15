@@ -1,0 +1,151 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sorting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the totel numbers");
+            int num = int.Parse(Console.ReadLine());
+
+            string[] menuOption = { "1. Ascending Order", "2. Descending Order" };
+            foreach(var item in menuOption)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Enter your Choice");
+            int choice = int.Parse(Console.ReadLine());
+
+            int[] arr = new int[num];
+            Console.WriteLine("Enter numbers for array");
+            for (int i = 0; i < num; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    BubbleSort(arr);
+                    InsertionSort(arr);
+                    break;
+                case 2:
+                    BubbleSortd(arr);
+                    InsertionSortd(arr);
+                    break;
+                default:  Console.WriteLine("Invalid Value");
+                    break;
+            }
+            //time taken
+            //number of operations done
+            Console.ReadLine();
+        }
+        
+        
+
+        private static void InsertionSort(int[] arr)
+        {
+            for (int i = 1; i < arr.Length; i++)
+            {
+                int item = arr[i];
+                int ins = 0;
+                for (int j = i - 1; j >= 0 && ins != 1;)
+                {
+                    if (item < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = item;
+                    }
+                    else ins = 1;
+                }
+            }
+
+            Console.WriteLine("The array after Insertion sort:");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+
+            }
+        }
+        private static void InsertionSortd(int[] arr)
+        {
+            for (int i = 1; i > arr.Length; i++)
+            {
+                int item = arr[i];
+                int ins = 0;
+                for (int j = i - 1; j >= 0 && ins != 1;)
+                {
+                    if (item < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = item;
+                    }
+                    else ins = 1;
+                }
+            }
+
+            Console.WriteLine("The array after Insertion sort:");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+
+            }
+        }
+
+        private static void BubbleSort(int[] arr)
+        {
+            for (int i = arr.Length - 1; i > 0; i--)
+            {
+                for (int j = 0; j <= i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        int temp = arr[j];
+
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("The array after Bubble sort:");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+
+            }
+        }
+        private static void BubbleSortd(int[] arr)
+        {
+            for (int i = arr.Length - 1; i > 0; i--)
+            {
+                for (int j = 0; j <= i - 1; j++)
+                {
+                    if (arr[j] < arr[j + 1])
+                    {
+                        int temp = arr[j];
+
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("The array after Bubble sort:");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+
+            }
+        }
+    }
+}

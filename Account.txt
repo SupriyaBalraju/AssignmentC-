@@ -1,0 +1,100 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingApplication
+{
+
+   abstract class Account
+    {
+        public int AccountBalance;
+        readonly  public string AccountNumner;
+        public string userName { get; set; }
+        public long phoneNumber { get; set; }
+        public Account(string r)
+        {
+            this.AccountNumner = r;
+        }
+
+        public Account()
+        {
+        }
+
+        public string OpenAccount()
+        {
+            Console.WriteLine("Enter the Account Holder Name");
+            userName = Console.ReadLine();
+            Console.WriteLine("Enter the Account Holder Phone Number");
+
+
+            phoneNumber = long.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Deposit Minimum Balance of Rs.1000");
+                AccountBalance = int.Parse(Console.ReadLine());
+                if (AccountBalance >= 1000)
+                {
+                    
+                    Console.WriteLine("Your Acount is Successfully Created");
+                    break;
+                }
+                else Console.WriteLine("Minimum Account Balance Should be 1000");
+            }
+         string num = GenerateNumber();
+            Console.WriteLine($"Your Account number is {num}");
+            return num;
+          
+
+        }
+        public string GenerateNumber()
+        {
+            Random random = new Random();
+            string r = "";
+            int i;
+            for (i = 1; i < 13; i++)
+            {
+                r += random.Next(0, 9).ToString();
+            }
+            return r;
+        }
+        public void CloseAccount()
+        {
+            Console.WriteLine("Enter the Account Number");
+            string cls = Console.ReadLine();
+
+        }
+        public void EditAccount()
+        {
+            Console.WriteLine("Choose the options");
+            Console.WriteLine("1.Select 1 To change the Account Holder Name");
+            Console.WriteLine("2.Select 2 To change the Account Holder Phone Number");
+            int choice = int.Parse(Console.ReadLine());
+            switch(choice)
+            {
+                case 1: Console.WriteLine("Enter New Name");
+                    this.userName = Console.ReadLine();
+                    Console.WriteLine("Name is Successfully Changed");
+                    break;
+                case 2: Console.WriteLine("Enter New Phone Number");
+                    this.phoneNumber =int.Parse( Console.ReadLine());
+                    Console.WriteLine("Phone Number is Successfully Changed");
+
+                    break;
+                default: Console.WriteLine("Invalid Input \n Please Try Again!!!");
+                    break;
+            }          
+        }
+
+        abstract public void Withdraw();
+        abstract public void Deposit();
+
+        public void CheckBalance()
+        {
+
+            Console.WriteLine($"Your Account Balance is : {AccountBalance}");
+
+        }
+    }
+}

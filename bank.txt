@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment13
+{
+    class Program
+    {
+        public static List<Bank> acclist = new List<Bank>();
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("1.Want to create user \n 2.deposit the amount \n 3.to withdraw \n 4.To know the mini statement");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        acclist.Add(Bank.Assign());
+                        break;
+                    case 2:
+                        Bank.Deposit();
+                        break;
+                    case 3:
+                        Bank.Withdraw();
+                        break;
+                    case 4:
+                        Bank.Minist();
+                        break;
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+    class Bank
+    {
+       
+        static  string dname;
+        string accno;
+        string acctype;
+        double balance;
+        public Bank(string accno,string acctype,double balance)
+        {
+            this.accno = accno;
+            this.acctype = acctype;
+            this.balance = balance;
+        }
+        public static Bank Assign()
+        {
+            Console.WriteLine("Enter the account number");
+            string num = Console.ReadLine();
+            Console.WriteLine("Enter the account type");
+            string at = Console.ReadLine();
+            Console.WriteLine("Enter the balance ");
+            double bal = double.Parse(Console.ReadLine());
+            Bank emp = new Bank(num, at, bal);
+            return emp;
+
+        }
+        public static void Deposit()
+        {
+            Console.WriteLine("Enter the account number");
+            string refacc = Console.ReadLine();
+            int i = 0;
+            for(;i <Program.acclist.Count();i++ )
+            {
+                if (Program.acclist[i].accno == refacc)
+                    break;
+            }
+            Console.WriteLine("Enter the amount to be deposited");
+            double amount = double.Parse(Console.ReadLine());
+            Program.acclist[i].balance += amount;
+        }
+        public static void Withdraw()
+        {
+            Console.WriteLine("Enter the account number");
+            string refacc = Console.ReadLine();
+            int i = 0;
+            for (; i < Program.acclist.Count(); i++)
+            {
+                if (Program.acclist[i].accno == refacc)
+                    break;
+            }
+            Console.WriteLine("Enter the amount to be withdrawn");
+            double amount = double.Parse(Console.ReadLine());
+            if(amount>Program.acclist[i].balance)
+            Program.acclist[i].balance -= amount;
+            else
+                Console.WriteLine("insufficient balance");
+        }
+        public static void Minist()
+        {
+            Console.WriteLine("Enter the account number");
+            string refacc = Console.ReadLine();
+            int i = 0;
+            for (; i < Program.acclist.Count(); i++)
+            {
+                if (Program.acclist[i].accno == refacc)
+                {
+                    Console.WriteLine($"The account number is {0} and balance is {1}",Program.acclist[i].accno, Program.acclist[i].balance);
+                    break;
+                }
+            }
+        }
+        
+    }
+}

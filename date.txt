@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the date in dd format");
+            int dd=int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the month in MM format");
+            int mm = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the month in yyyy format");
+            int yyyy = int.Parse(Console.ReadLine());
+            DateTime dt = DateTime.Now;
+            DateTime cd = new DateTime(yyyy, mm, dd);
+            Console.WriteLine("The difference in terms of days is "+cd.Subtract(dt).Days);
+            Console.WriteLine("The difference in terms of minutes is " + cd.Subtract(dt).Minutes);
+            Console.WriteLine("The difference in terms of seconds is " + cd.Subtract(dt).Seconds);
+            Console.WriteLine(cd.ToLongDateString());
+            Console.ReadLine();
+        }
+    }
+}?
+
+

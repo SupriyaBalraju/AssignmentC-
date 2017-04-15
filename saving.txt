@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingApplication
+{
+    class SavingAccount : Account
+    {
+        public int Amount;
+        public int MaxAccountDeposit = 50000;
+        
+        public override void Deposit()
+        {
+            Console.WriteLine("Enter the Account Number");
+            if (MaxAccountDeposit > 50000)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You Cant Deposit Today \n You Have Crossed the limit \n Please try tomorrow");
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Enter the Amount to be Deposited");
+                Amount = int.Parse(Console.ReadLine());
+                AccountBalance += Amount;
+                Console.WriteLine($"Your New Account Balance is : {AccountBalance}");
+            }
+        }
+        public override void Withdraw()
+        {
+            Console.WriteLine("Enter the Amount to Be Withdrawn");
+            Amount = int.Parse(Console.ReadLine());
+            AccountBalance -= Amount;
+            Console.WriteLine("Withdraw successfull");
+            Console.WriteLine($"Your New Account Balance is : {AccountBalance}");
+        }
+        public void GetAccountDetails()
+        {
+
+        }
+
+
+    }
+}

@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Displaymenu();
+        }
+     switch (choice)
+	{
+		case 1: result = Add(num1, num2);  break;
+        case 2: result = Substract(num1, num2);  break;
+        case 3: result = Multiply(num1, num2);  break;
+        case 4: result = Add(num1, num2);  break;
+	}
+   private static  int Add(int a, int b )
+        int res = a+int b;
+
+    internal class num2
+    {
+    }
+
+    private static int GetInt(String message)
+        {
+            int val = 0;
+            while (true)
+            {
+                Console.WriteLine(message);
+                if (int.TryParse(Console.ReadLine(), out val))
+                    break;
+                Console.WriteLine("Error! Try again");
+            }
+            return val;
+        }
+        private static void Displaymenu()
+        {
+            Console.WriteLine("1. Add");
+            Console.WriteLine("1. Sub");
+            Console.WriteLine("1. Multiply");
+            Console.WriteLine("1. Divide");
+        }
+    }
+}

@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Shapes
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the value of Length");
+            double length = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the value of bredth");
+            double bredth = double.Parse(Console.ReadLine());
+
+            Triangle tri = new Triangle();
+            tri.Area(length, bredth);
+
+            Rectangle rec = new Rectangle();
+            rec.Area(length, bredth);
+
+            Console.ReadLine();
+        }
+    }
+    class Shape
+    {
+        public virtual void Area(double length, double bredth)
+        {
+            
+        }
+
+    }
+    class Triangle : Shape
+    {
+        double bredth, height;
+        public override void Area(double num1, double num2)
+        {
+            height = num1;
+            bredth = num2;
+            double TriangleArea = (height * bredth) / 2;
+            Console.WriteLine($"The Area of Triangle is { TriangleArea}");
+        }
+
+    }
+    class Rectangle : Shape
+    {
+        double bredth, height;
+        public override void Area(double num1, double num2)
+        {
+            height = num1;
+            bredth = num2;
+            double RectangleArea = height * bredth;
+            Console.WriteLine($"The Area of Rectangle is { RectangleArea}");
+        }
+
+
+    }
+
+}

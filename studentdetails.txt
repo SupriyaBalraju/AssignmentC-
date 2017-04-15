@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+namespace Assignment9
+{
+    class Program
+    {
+        static int num = 0;
+        static List<double> phy = new List<double>();
+        static List<double> chem = new List<double>();
+        static  List<double> math = new List<double>();
+        static List<double> bio = new List<double>();
+        static List<int> rollno = new List<int>();
+        static List<double> total = new List<double>();
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter the number of students");
+            num= int.Parse(Console.ReadLine()); 
+            int i = 1;
+            while (i <= num)
+            {
+                Console.WriteLine("Please enter the roll number");
+                rollno[i]=int.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the physics marks ");
+                phy[i]=double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the chemistry marks ");
+                chem[i]=double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the biology marks ");
+                bio[i]=double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the mathematics marks ");
+                math[i]=double.Parse(Console.ReadLine());
+                i++;
+            }
+            total = Total();
+            Console.WriteLine("1. Total marks obtained by each student");
+            Console.WriteLine("2.The highest marks obtained in each subject and the Roll No. of the student who secured it.");
+            Console.WriteLine("3.The student who secured highest total marks");
+            Console.WriteLine("4.The Top 5 students who secured highest marks in Physics, Chemistry and Mathematics");
+            Console.WriteLine("5.The list of students in descending order of total marks scored in Physics, Chemistry and Biology");
+            Console.WriteLine("Enter the choice");
+            int cho = int.Parse(Console.ReadLine());
+            switch (cho)
+            {
+                case 1:for (int a = 0; a < rollno.Count; a++)
+                        Console.WriteLine($"rollno {0} and total marks  {1}");
+                    break;
+                case 2:
+                    int z=higheach(phy);
+                    Console.WriteLine($"The highest marks in physics is {0} with roll number {1}",phy[z],rollno[z]);
+                     z = higheach(phy);
+                    Console.WriteLine($"The highest marks in physics is {0} with roll number {1}", math[z], rollno[z]);
+                     z = higheach(phy);
+                    Console.WriteLine($"The highest marks in physics is {0} with roll number {1}", bio[z], rollno[z]);
+                     z = higheach(phy);
+                    Console.WriteLine($"The highest marks in physics is {0} with roll number {1}", chem[z], rollno[z]);
+                    break;
+                case 3:int y= higheach(total);
+                    Console.WriteLine($"The highest marks in physics is {0} with roll number {1}", total[y], rollno[y]);
+                    break;
+                case 4:
+                    highof(total, rollno, bio, 1);
+                    break;
+                case 5:
+                    highof(total, rollno, math, 1);
+                    break;
+            }
+        }
+        static List<double> Total()
+        {
+            int j = 0;
+            List<double> sum =new List<double>();
+            while (j < num)
+            {
+                sum[j] = phy[j] + bio[j] + math[j] + chem[j];
+            }
+            return sum;
+        }
+        static int higheach(List<double> great)
+          {
+            int k = 0;
+            int index = 0;
+            while (k < num)
+            {
+                if (great[k] < great[k + 1])
+                {
+                    index = k + 1;
+                }
+            }
+            return index; 
+          }
+        static void highof(List<double> top, List<int> num, List<double> option, int opt)
+        {
+            for (int i = 0; i < top.Count; i++)
+            {
+                top[i] -= option[i];
+            }
+            double temp = 0; int temp2 = 0;
+            for (int i = 0; i < top.Count - 1; i++)
+            {
+                for (int j = 0; j < top.Count - 1; j++)
+                {
+                    if (top[j] < top[j + 1])
+                    {
+                        temp = top[j];
+                        top[j] = top[j + 1];
+                        top[j + 1] = temp;
+                        temp2 = num[j];
+                        num[j] = num[j + 1];
+                        num[j + 1] = temp2;
+                    }
+                }
+            }
+            switch (opt)
+            {
+                case 1:for (int i = 0; i < 5; i++)
+                    {
+                        Console.WriteLine($"The roll number is {0} and marks is {1}",num[i],top[i]);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i <top.Count; i++)
+                    {
+                        Console.WriteLine($"The roll number is {0} and marks is {1}", num[i], top[i]);
+                    }
+                    break;
+            }
+        
+        }
+
+        }
+ 
+    }

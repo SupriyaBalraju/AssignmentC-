@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace mean_mode_median_stddeviation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, i;
+            Console.WriteLine("enter the length of the array");
+            n = int.Parse(Console.ReadLine());
+            int[] arr = new int[n];
+            Console.WriteLine("Enter the array elelments ");
+            for ( i = 0; i < n; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            } 
+            int sum = 0;
+            for(i=0;i<n;i++)
+            {
+                sum = sum + arr[i];
+            }
+            int tot = arr.Length;
+            float mean = (float) sum / tot;
+            Console.WriteLine("Mean of the array elements is: " + mean);
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------------");
+
+            if(n/2==1)
+            {
+                int median = arr[n / 2];
+                Console.WriteLine("The Median is " + median);
+            }
+            else
+            {
+                for(i=0;i<n;i++)
+                {
+                    for(int j=1;j<n;j++)
+                    {
+                        if(arr[i]>arr[j])
+                        {
+                            int temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+                Console.WriteLine("The value after sorting");
+                for(i=0;i<n;i++)
+                {
+                    Console.WriteLine(arr[i]);
+                }
+                float median = (float)(arr[n / 2] + arr[n / 2 - 1]) / 2;
+                Console.WriteLine("Median of array elements is  " + median);
+            }
+            Console.Read();
+
+             
+
+        }
+    }
+}

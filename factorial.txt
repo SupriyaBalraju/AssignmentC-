@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace factorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the Number");
+            int num = int.Parse(Console.ReadLine());
+            int Num = num;
+            int fact = 1;
+            for(int i=1 ; i<=Num ;i++)
+            {
+                fact = fact * i ; 
+            }
+            Console.WriteLine("The number entered " + Num + " And its Factorial " + fact);
+            Console.Read();
+        }
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace factorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the Range of numbers upto which you want to find factorial.");
+            int range = int.Parse(Console.ReadLine());
+            int Num = range;
+            int fact = 1;
+            int j = 1;
+            while(j<=range)
+            {
+
+                for (int i =1; i<=j ; i++)
+                {
+                    fact = fact * i;
+                }
+
+                Console.WriteLine("The number entered " + j + " And its Factorial " + fact);
+                j++;
+                fact = 1;
+            }
+           Console.Read();
+        }
+    }
+}

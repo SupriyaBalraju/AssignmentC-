@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApplication_Collisions
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<Int64> picked = new HashSet<Int64>();
+
+            Random rnd = new Random();
+
+            Int64 next = rnd.Next(Int32.MaxValue);
+            Int64 index = 0;
+
+            while (! picked.Contains(next))
+            {
+                picked.Add(next);
+
+                index++;
+                next = rnd.Next(Int32.MaxValue);
+            }
+
+            Console.WriteLine("First duplicate found after {0} attempts.", index);
+        }
+    }
+}

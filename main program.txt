@@ -1,0 +1,123 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingApplication
+{
+    class Program
+    {
+       public  static List<SavingAccount> saving = new List<SavingAccount>();
+        public static List<CurrentAccount> current = new List<CurrentAccount>();
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Banking Services");
+            
+            Console.WriteLine("Select the type of account");
+            Console.WriteLine("1. Savings Account \t 2. Current Account");
+            int i = GetInt("Enter your choice");
+            if (i == 1)
+            {
+                SavingAccount sa = new SavingAccount();
+                Display();
+                int choice = GetInt("Enter your Choice");
+                switch (choice)
+                {
+                    case 1: 
+                        sa.OpenAccount();
+                        break;
+                    case 2:
+                        sa.CheckBalance();
+                        break;
+                    case 3: sa.Deposit();
+                        break;
+                    case 4: sa.Withdraw();
+                        break;
+                    case 5: sa.EditAccount();
+                        break;
+                    case 6: /*sa.TransferAmount();*/
+                        break;
+                    case 7: sa.CloseAccount();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
+                }
+            }
+            else if (i == 2)
+            {
+                Display();
+                CurrentAccount ca = new CurrentAccount();
+                int choice = GetInt("Enter your Choice");
+                switch (choice)
+                {
+                    case 1:
+                        ca.OpenAccount();
+                        break;
+                    case 2:
+                        ca.CheckBalance();
+                        break;
+                    case 3:
+                        ca.Deposit();
+                        break;
+                    case 4:
+                        ca.Withdraw();
+                        break;
+                    case 5:
+                        ca.EditAccount();
+                        break;
+                    case 6: /*sa.TransferAmount();*/
+                        break;
+                    case 7:
+                        ca.CloseAccount();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+                
+            Console.ReadLine();
+        }
+        public static void Display()
+        {
+            string[] menuOptions = { "1. Open Account", "2.Check Balance ", "3. Deposit", "4. Withdraw", "5. EditAccount()", "6. Transfer Amount","7. Close Account" };
+            foreach(var item in menuOptions)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        
+        private static int GetInt(string message)
+        {
+            int val = 0;
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+               
+                Console.WriteLine(message);
+                
+
+                if (int.TryParse(Console.ReadLine(), out val))
+                    break;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Error! Try again");
+                }
+            }
+            return val;
+
+        }
+        
+           
+    }
+
+}

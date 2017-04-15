@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingApplication
+{
+
+    class CurrentAccount:Account
+    {
+        public int Amount = 0;
+        public override void Deposit()
+        {
+            Console.WriteLine("Enter the Amount to be Deposited");
+            Amount = int.Parse(Console.ReadLine());
+            AccountBalance += Amount;
+            Console.WriteLine($"Your New Account Balance is : {AccountBalance}");
+        }
+        public override void Withdraw()
+        {
+            Console.WriteLine("Enter the Amount to Be Withdrawn");
+            Amount = int.Parse(Console.ReadLine());
+            AccountBalance -= Amount;
+            Console.WriteLine("Withdraw successfull");
+            Console.WriteLine($"Your New Account Balance is : {AccountBalance}");
+        }
+    }
+}
